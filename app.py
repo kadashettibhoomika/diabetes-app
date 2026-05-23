@@ -15,7 +15,7 @@ def home():
 def predict():
     data = request.get_json()
 
-    features = np.array([[ 
+    features = np.array([[
         float(data['pregnancies']),
         float(data['glucose']),
         float(data['bloodpressure']),
@@ -27,8 +27,13 @@ def predict():
     ]])
 
     prediction = model.predict(features)[0]
+    proba = model.predict_proba(features)[0]
 
-    return jsonify({"prediction": "Diabetic" if prediction == 1 else "Not Diabetic"})
+    confidence = round(max(proba) * 100, 2)
 
-if __name__ == "__main__":
-    app.run()
+    result = "Diabetic" if prediction == 1 else "Not Diabetic"
+
+    return jsonify({
+        "prediction": result,
+        "confidence": confidence
+    })
