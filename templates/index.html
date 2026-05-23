@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h2>Diabetes Prediction App</h2>
+
+    <form action="/predict" method="post">
+
+        <input type="text" name="pregnancies" placeholder="Pregnancies"><br>
+        <input type="text" name="glucose" placeholder="Glucose"><br>
+        <input type="text" name="bloodpressure" placeholder="Blood Pressure"><br>
+        <input type="text" name="skinthickness" placeholder="Skin Thickness"><br>
+        <input type="text" name="insulin" placeholder="Insulin"><br>
+        <input type="text" name="bmi" placeholder="BMI"><br>
+        <input type="text" name="dpf" placeholder="Diabetes Pedigree Function"><br>
+        <input type="text" name="age" placeholder="Age"><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <h3>{{ prediction_text }}</h3>
+
+</body>
+</html>
